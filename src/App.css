@@ -1,38 +1,92 @@
+:root {
+  --title-color: #c73d46;
+}
+
 .App {
-  text-align: center;
+  height: 100vh;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: url('./assets/call4.jpg') no-repeat;
+  background-position: 47vw bottom;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+} 
+
+header a {
+  text-decoration: none;
+  color: var(--title-color);
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header h3 {
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header img {
+  width: 100px;
+  height: 50px;
+}
+
+main {
+  max-width: 560px;
+}
+
+main h1 {
+  font-size: 54px;
+  color: var(--title-color);
+  margin-top: 10px;
+}
+
+main p {
+  font-weight: 700;
+  margin-top: -30px;
+}
+
+main form {
+  background-color:#ECECEC;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 730px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+main form input,
+form select {
+  background-color: #FFF;
+  border: 0;
+  padding: 16px 0;
+  font-size: 16px;
+  width: 300px;
+  outline-color: var(--title-color);
+  border-radius: 8px;
+  text-align: center;
+  margin: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main form button {
+  width: 260px;
+  height: 56px;
+  background-color: var(--title-color);
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  border: 0;
+  margin-top: 40px;
+  transition: background-color 400ms;
+}
+
+main form button:hover {
+  background-color: #9c3037;
 }
