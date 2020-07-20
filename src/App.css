@@ -7,8 +7,8 @@
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
-  background: url('./assets/call4.jpg') no-repeat;
-  background-position: 47vw bottom;
+  background: url('./assets/call3.jpg') no-repeat;
+  background-position: 42vw bottom;
 }
 
 header {
@@ -48,6 +48,7 @@ main h1 {
 main p {
   font-weight: 700;
   margin-top: -30px;
+  color: #192A30;
 }
 
 main form {
@@ -65,13 +66,24 @@ main form input,
 form select {
   background-color: #FFF;
   border: 0;
-  padding: 16px 0;
+  padding: 16px 24px;
   font-size: 16px;
   width: 300px;
   outline-color: var(--title-color);
   border-radius: 8px;
   text-align: center;
   margin: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+main form input {
+  color: var(--title-color);
+}
+
+main form select {
+  font-size: 16px;
+  color: #757575;
 }
 
 main form button {

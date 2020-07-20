@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 import logo from './assets/logo2.png';
-import buyicon from './assets/buyicon.png';
 
 function App() {
   const [origem, setOrigem] = useState('');
@@ -104,11 +103,11 @@ function App() {
   return (
     <>
       <div className="App">
-        <header>
-          <img src={logo} alt="Logo FaleMais" />
-          
-          <a href="#">Adquirir um plano</a>
-        </header>
+          <header>
+            <img src={logo} alt="Logo FaleMais" />
+            
+            <a href="#">Adquirir um plano</a>
+          </header>
 
         <main> 
           <h1>FaleMais da Telzir</h1>
@@ -118,19 +117,19 @@ function App() {
           </p>
 
           <form onSubmit={handleSubmit}>
-            <input 
-              name="origem"
-              placeholder="Código DDD da cidade ORIGEM"
-              value={origem}
-              onChange={ opcao => setOrigem(opcao.target.value) }
-            />
+              <input 
+                name="origem"
+                placeholder="Código DDD da cidade ORIGEM"
+                value={origem}
+                onChange={ opcao => setOrigem(opcao.target.value) }
+              />
 
-            <input 
-              name="destino"
-              placeholder="Código DDD da cidade DESTINO"
-              value={destino}
-              onChange={ opcao => setDestino(opcao.target.value) }
-            />
+              <input 
+                name="destino"
+                placeholder="Código DDD da cidade DESTINO"
+                value={destino}
+                onChange={ opcao => setDestino(opcao.target.value) }
+              />
 
             <input 
               name="tempo"
@@ -153,9 +152,9 @@ function App() {
               onChange={ opcao => setPlano(opcao.target.value)}
             >
               <option value="">Informe o Plano FaleMais</option>
-              <option value="">FaleMais 30</option>
-              <option value="">FaleMais 60</option>
-              <option value="">FaleMais 120</option>
+              <option value="plano1">FaleMais 30</option>
+              <option value="plano2">FaleMais 60</option>
+              <option value="plano3">FaleMais 120</option>
             </select>
 
             <button type="submit" onClick={handleSubmit}>
