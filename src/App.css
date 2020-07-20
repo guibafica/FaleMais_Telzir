@@ -11,6 +11,13 @@
   background-position: 42vw bottom;
 }
 
+span {
+  color: #ff4970;
+  align-self: flex-start;
+  margin: 0 0 10px;
+  font-weight: bold;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -48,7 +55,7 @@ main h1 {
 main p {
   font-weight: 700;
   margin-top: -30px;
-  color: #192A30;
+  color: #395966;
 }
 
 main form {

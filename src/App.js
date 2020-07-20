@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as Yup from 'yup';
 
 import './App.css';
 
 import logo from './assets/logo2.png';
 
+const schema = Yup.object().shape({
+  origem: Yup.number().required('Informe um DDD válido (011, 016, 017 ou 018)'),
+  destino: Yup.number().required('Informe um DDD válido (011, 016, 017 ou 018)'),
+  tempo: Yup.number().required('Informe a duração da ligação'),
+});
+
 function App() {
   const [origem, setOrigem] = useState('');
   const [destino, setDestino] = useState('');
   const [tempo, setTempo] = useState('');
-  const [plano, setPlano] = useState('');
+  const [plano, setPlano] = useState(null);
 
   async function handleSubmit(opcao) {
     opcao.preventDefault();
@@ -21,7 +28,11 @@ function App() {
     data.append('tempo', tempo);
     data.append('plano', plano);
 
-    if (origem === "011" && destino === "016" ) {
+    if (plano === null) {
+      toast.warn('Selecione um Plano!');
+    }
+
+    if (origem === "011" && destino === "016" && plano != null) {
       const valorSem = tempo * 1.90;
       var valorCom = tempo - plano;
       
@@ -34,7 +45,7 @@ function App() {
       toast.success(`Valor COM FaleMais: $${valorCom}. Valor SEM FaleMais: $${valorSem}`);
     }
 
-    if (origem === "011" && destino === "017" ) {
+    if (origem === "011" && destino === "017" && plano != null) {
       const valorSem = tempo * 1.70;
       valorCom = tempo - plano;
       
@@ -47,7 +58,7 @@ function App() {
       toast.success(`Valor COM FaleMais: $${valorCom}. Valor SEM FaleMais: $${valorSem}`);
     }
 
-    if (origem === "016" && destino === "011" ) {
+    if (origem === "016" && destino === "011" && plano != null) {
       const valorSem = tempo * 2.90;
       valorCom = tempo - plano;
       
@@ -60,7 +71,7 @@ function App() {
       toast.success(`Valor COM FaleMais: $${valorCom}. Valor SEM FaleMais: $${valorSem}`);
     }
 
-    if (origem === "017" && destino === "011" ) {
+    if (origem === "017" && destino === "011" && plano != null) {
       const valorSem = tempo * 2.70;
       valorCom = tempo - plano;
       
@@ -73,7 +84,7 @@ function App() {
       toast.success(`Valor COM FaleMais: $${valorCom}. Valor SEM FaleMais: $${valorSem}`);
     }
 
-    if (origem === "011" && destino === "018" ) {
+    if (origem === "011" && destino === "018" && plano != null) {
       const valorSem = tempo * 0.90;
       valorCom = tempo - plano;
       
@@ -86,7 +97,7 @@ function App() {
       toast.success(`Valor COM FaleMais: $${valorCom}. Valor SEM FaleMais: $${valorSem}`);
     }
 
-    if (origem === "018" && destino === "011" ) {
+    if (origem === "018" && destino === "011" && plano != null) {
       const valorSem = tempo * 1.90;
       valorCom = tempo - plano;
       
@@ -116,20 +127,20 @@ function App() {
             disponíveis para você!
           </p>
 
-          <form onSubmit={handleSubmit}>
-              <input 
-                name="origem"
-                placeholder="Código DDD da cidade ORIGEM"
-                value={origem}
-                onChange={ opcao => setOrigem(opcao.target.value) }
-              />
+          <form schema={schema} onSubmit={handleSubmit}>
+            <input 
+              name="origem"
+              placeholder="Código DDD da cidade ORIGEM"
+              value={origem}
+              onChange={ opcao => setOrigem(opcao.target.value) }
+            />
 
-              <input 
-                name="destino"
-                placeholder="Código DDD da cidade DESTINO"
-                value={destino}
-                onChange={ opcao => setDestino(opcao.target.value) }
-              />
+            <input 
+              name="destino"
+              placeholder="Código DDD da cidade DESTINO"
+              value={destino}
+              onChange={ opcao => setDestino(opcao.target.value) }
+            />
 
             <input 
               name="tempo"
@@ -139,22 +150,15 @@ function App() {
               onChange={ opcao => setTempo(opcao.target.value) }
             />
 
-            {/* <input 
-              name="plano"
-              placeholder="Informe o Plano FaleMais"
-              value={plano}
-              onChange={ opcao => setPlano(opcao.target.value) }
-            /> */}
-
             <select 
               name="plano"
               value="plano"
               onChange={ opcao => setPlano(opcao.target.value)}
             >
-              <option value="">Informe o Plano FaleMais</option>
-              <option value="plano1">FaleMais 30</option>
-              <option value="plano2">FaleMais 60</option>
-              <option value="plano3">FaleMais 120</option>
+              <option value="plano">Selecione o Plano FaleMais</option>
+              <option value="30">FaleMais 30</option>
+              <option value="60">FaleMais 60</option>
+              <option value="120">FaleMais 120</option>
             </select>
 
             <button type="submit" onClick={handleSubmit}>
